@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+
+/* Opcional: pequeños ajustes */
+:root { color-scheme: light; }
+
+/* Extras opcionales */
+html, body { height: 100%; }

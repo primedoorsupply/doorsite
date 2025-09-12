@@ -1,0 +1,14 @@
+{
+  // Usa el motor de Tailwind en lugar del validador CSS para estos at-rules
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+
+  // IntelliSense de Tailwind apuntando a tu config
+  "tailwindCSS.experimental.configFile": "tailwind.config.js",
+
+  // (Opcional) si ves el archivo como CSS plano, fuerza PostCSS para mejores sugerencias
+  "files.associations": {
+    "**/globals.css": "postcss"
+  }
+}
