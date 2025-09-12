@@ -1,0 +1,9 @@
+<!-- src/app/icon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Cuerpo de la puerta -->
+  <path d="M84 24h88a12 12 0 0 1 12 12v188H72V36a12 12 0 0 1 12-12Z" fill="currentColor"/>
+  <!-- Marco inferior (umbral) -->
+  <rect x="64" y="212" width="128" height="20" rx="4" fill="currentColor"/>
+  <!-- Perilla -->
+  <circle cx="154" cy="128" r="10" fill="#ffffff"/>
+</svg>
