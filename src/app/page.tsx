@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ServicesSection from "@/components/sections/Services";
 import ContactForm from "@/components/sections/ContactForm";
+import Script from "next/script";
+
+/* URL pública del sitio para el schema (usa env o fallback) */
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://primedoorsupply.com";
 
 /* ==== ICONOS INLINE (sin dependencias) ==== */
 function RulerIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -42,8 +46,56 @@ function SparkleIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function HomePage() {
+  /* JSON-LD LocalBusiness + Services */
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    name: "PrimeDoor Supply",
+    url: siteUrl,
+    telephone: "+1-352-501-8150",
+    areaServed: [
+      "Inverness FL",
+      "Citrus County FL",
+      "Hernando FL",
+      "Lecanto FL",
+      "Crystal River FL",
+      "Homosassa FL",
+      "The Villages FL",
+      "Ocala FL",
+    ],
+    priceRange: "$$",
+    image: `${siteUrl}/gallery/g9.jpg`,
+    makesOffer: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Interior Door Installation",
+          areaServed: "Citrus County, FL",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Interior Door Supply (Slab/Prehung)",
+          areaServed: "Citrus County, FL",
+        },
+      },
+    ],
+    sameAs: [] as string[], // agrega perfiles cuando los tengas (Facebook, Instagram, etc.)
+  };
+
   return (
     <main id="home">
+      {/* JSON-LD */}
+      <Script
+        id="ld-local"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* HERO */}
       <section
         id="hero"
@@ -188,7 +240,7 @@ export default function HomePage() {
             Popular options and reference sizes. Final fit is confirmed on-site.
           </p>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {/* Flush Hollow (Slab) */}
             <div className="p-4 rounded-lg border bg-white">
               <div className="relative rounded-md overflow-hidden bg-gray-100 aspect-[2/3] scale-90 mx-auto">
